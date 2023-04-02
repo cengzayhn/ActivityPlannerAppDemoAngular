@@ -1,0 +1,58 @@
+<table class="table table-borderless table-dark">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Task</th>
+        <th scope="col">Description</th>
+        <th scope="col">Date</th>
+        <th scope="col">Done</th>
+        <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let todo of listOfTodos">
+            <th scope="row">{{todo.id}}</th>
+            <td>{{todo.task}}</td>
+            <td>{{todo.description}}</td>
+            <td>{{todo.date}}</td>
+            <td>{{todo.done}}</td>
+            <td><button type="button" class="btn btn-danger" (click)="delete(todo.id)"onClick="window.location.reload();" >Delete</button></td>
+            
+        </tr>
+    </tbody>
+
+  </table>
+
+<button (click)="showAddTodo()" class="btn btn-warning">New Activity</button>
+
+<div *ngIf="show" class="mx-3" >
+    <br>
+    <form [formGroup]="todoForm" (ngSubmit)="handleSubmit()">
+        <label >
+            Task
+            <input type="text" formControlName="task" >
+        </label>
+        <br>
+        <label >
+            Description
+            <input type="text" formControlName="description">
+        </label>
+        <br>
+        <label >
+            Date
+            <input type="date" formControlName="date">
+        </label>
+        <br>
+        <label >
+            Done
+            <input type="checkbox" formControlName="done">
+        </label>
+        <br>
+    
+        <input type="submit" class="btn btn-primary" value="Add" >
+    
+    
+    </form>
+</div>
+
+
